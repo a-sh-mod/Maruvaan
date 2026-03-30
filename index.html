@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Maruvaan — Home-style Tiffin, Sydney</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --saffron: #E8590C;
+  --saffron-light: #F97316;
+  --turmeric: #D4900A;
+  --gold: #F5C842;
+  --cream: #FFF8F0;
+  --cream2: #FEF3E2;
+  --bark: #2C1810;
+  --bark2: #3D2314;
+  --clay: #7C3A1E;
+  --green: #2D6A4F;
+  --green-light: #52B788;
+  --text: #1A0F08;
+  --text2: #5C3D2E;
+  --border: rgba(44,24,16,0.12);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--cream);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 5%;height:68px;
+  background:rgba(255,248,240,0.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{
+  font-family:'Playfair Display',serif;
+  font-size:1.6rem;font-weight:900;
+  color:var(--saffron);
+  letter-spacing:-0.5px;
+}
+.nav-logo span{color:var(--bark);}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{
+  font-size:0.88rem;font-weight:500;
+  color:var(--text2);text-decoration:none;
+  transition:color 0.2s;
+}
+.nav-links a:hover{color:var(--saffron);}
+.nav-cart{
+  display:flex;align-items:center;gap:0.5rem;
+  background:var(--saffron);color:#fff;
+  border:none;padding:0.5rem 1.2rem;
+  border-radius:100px;font-size:0.88rem;font-weight:500;
+  cursor:pointer;transition:background 0.2s;font-family:'DM Sans',sans-serif;
+}
+.nav-cart:hover{background:var(--clay);}
+.cart-badge{
+  background:#fff;color:var(--saffron);
+  font-size:0.75rem;font-weight:700;
+  width:18px;height:18px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+}
+
+/* ── HERO ── */
+#hero{
+  min-height:100vh;
+  display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;
+  padding:68px 5% 0;
+  background:var(--cream);
+  position:relative;overflow:hidden;
+}
+.hero-bg-pattern{
+  position:absolute;inset:0;
+  background-image:
+    radial-gradient(circle at 80% 20%, rgba(232,89,12,0.08) 0%, transparent 50%),
+    radial-gradient(circle at 20% 80%, rgba(212,144,10,0.06) 0%, transparent 50%);
+  pointer-events:none;
+}
+.hero-dots{
+  position:absolute;right:0;top:50%;transform:translateY(-50%);
+  width:340px;height:340px;opacity:0.07;
+  background-image:radial-gradient(circle, var(--saffron) 1.5px, transparent 1.5px);
+  background-size:24px 24px;
+  pointer-events:none;
+}
+.hero-text{padding-right:3rem;animation:fadeUp 0.8s ease both;}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  background:rgba(232,89,12,0.1);
+  color:var(--saffron);
+  font-size:0.8rem;font-weight:500;
+  padding:0.35rem 1rem;border-radius:100px;
+  margin-bottom:1.5rem;
+  border:1px solid rgba(232,89,12,0.2);
+}
+.hero-tag::before{content:'●';font-size:0.5rem;}
+h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.8rem,5vw,4.2rem);
+  line-height:1.1;
+  font-weight:900;
+  color:var(--bark);
+  margin-bottom:1.5rem;
+}
+h1 em{
+  font-style:italic;
+  color:var(--saffron);
+}
+.hero-sub{
+  font-size:1.05rem;line-height:1.7;
+  color:var(--text2);max-width:440px;
+  margin-bottom:2.5rem;font-weight:300;
+}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{
+  background:var(--saffron);color:#fff;
+  border:none;padding:0.85rem 2rem;
+  border-radius:100px;font-size:0.95rem;font-weight:500;
+  cursor:pointer;text-decoration:none;
+  transition:all 0.2s;font-family:'DM Sans',sans-serif;
+  display:inline-block;
+}
+.btn-primary:hover{background:var(--clay);transform:translateY(-1px);}
+.btn-secondary{
+  background:transparent;color:var(--bark);
+  border:1.5px solid var(--bark);
+  padding:0.85rem 2rem;border-radius:100px;
+  font-size:0.95rem;font-weight:500;
+  cursor:pointer;text-decoration:none;
+  transition:all 0.2s;font-family:'DM Sans',sans-serif;
+  display:inline-block;
+}
+.btn-secondary:hover{background:var(--bark);color:#fff;}
+.hero-stats{
+  display:flex;gap:2.5rem;margin-top:3rem;
+  padding-top:2rem;border-top:1px solid var(--border);
+}
+.stat-num{
+  font-family:'Playfair Display',serif;
+  font-size:1.8rem;font-weight:900;color:var(--saffron);
+}
+.stat-label{font-size:0.82rem;color:var(--text2);font-weight:400;}
+
+.hero-visual{
+  display:flex;flex-direction:column;gap:1rem;
+  align-items:flex-end;
+  animation:fadeUp 0.8s 0.2s ease both;
+  position:relative;z-index:1;
+}
+.tiffin-card{
+  background:#fff;border-radius:20px;
+  border:1px solid var(--border);
+  overflow:hidden;
+  box-shadow:0 8px 40px rgba(44,24,16,0.1);
+}
+.tiffin-card-main{
+  width:100%;max-width:360px;
+}
+.tiffin-img{
+  height:200px;
+  background:linear-gradient(135deg, #F97316 0%, #D4900A 100%);
+  display:flex;align-items:center;justify-content:center;
+  font-size:5rem;
+}
+.tiffin-card-body{padding:1.2rem 1.5rem;}
+.tiffin-day{
+  font-size:0.75rem;font-weight:500;
+  color:var(--saffron);text-transform:uppercase;
+  letter-spacing:1px;margin-bottom:0.3rem;
+}
+.tiffin-name{
+  font-family:'Playfair Display',serif;
+  font-size:1.2rem;font-weight:700;color:var(--bark);
+  margin-bottom:0.5rem;
+}
+.tiffin-items{
+  display:flex;flex-wrap:wrap;gap:0.4rem;
+  margin-bottom:1rem;
+}
+.item-chip{
+  background:var(--cream2);color:var(--text2);
+  font-size:0.75rem;padding:0.25rem 0.7rem;
+  border-radius:100px;border:1px solid var(--border);
+}
+.tiffin-price-row{
+  display:flex;align-items:center;justify-content:space-between;
+}
+.price-tag{
+  font-family:'Playfair Display',serif;
+  font-size:1.4rem;font-weight:700;color:var(--saffron);
+}
+.add-btn{
+  background:var(--saffron);color:#fff;
+  border:none;width:36px;height:36px;border-radius:50%;
+  font-size:1.2rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:background 0.2s;
+}
+.add-btn:hover{background:var(--clay);}
+
+.mini-cards{display:flex;gap:0.8rem;}
+.mini-card{
+  background:#fff;border-radius:14px;
+  border:1px solid var(--border);
+  padding:1rem;
+  flex:1;min-width:0;
+  box-shadow:0 4px 20px rgba(44,24,16,0.07);
+}
+.mini-icon{font-size:1.5rem;margin-bottom:0.4rem;}
+.mini-title{font-size:0.82rem;font-weight:500;color:var(--bark);}
+.mini-val{font-size:0.75rem;color:var(--text2);}
+
+/* ── SECTION HEADER ── */
+.section-header{text-align:center;margin-bottom:3.5rem;}
+.section-tag{
+  display:inline-block;
+  background:rgba(232,89,12,0.1);color:var(--saffron);
+  font-size:0.78rem;font-weight:500;
+  padding:0.3rem 1rem;border-radius:100px;
+  border:1px solid rgba(232,89,12,0.2);
+  margin-bottom:1rem;text-transform:uppercase;letter-spacing:1px;
+}
+.section-header h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.8rem,3.5vw,2.6rem);
+  font-weight:900;color:var(--bark);line-height:1.2;
+}
+.section-header p{
+  color:var(--text2);font-size:1rem;
+  max-width:520px;margin:0.8rem auto 0;line-height:1.7;font-weight:300;
+}
+
+/* ── HOW IT WORKS ── */
+#how{
+  padding:6rem 5%;
+  background:var(--bark);
+  color:#fff;position:relative;overflow:hidden;
+}
+#how::before{
+  content:'';position:absolute;
+  top:-60px;left:-60px;width:260px;height:260px;
+  border-radius:50%;
+  background:rgba(232,89,12,0.15);
+  filter:blur(60px);pointer-events:none;
+}
+#how .section-header h2{color:#fff;}
+#how .section-header p{color:rgba(255,255,255,0.65);}
+#how .section-tag{
+  background:rgba(232,89,12,0.2);color:var(--gold);
+  border-color:rgba(245,200,66,0.2);
+}
+.steps-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:2rem;position:relative;
+}
+.steps-grid::before{
+  content:'';position:absolute;
+  top:36px;left:10%;right:10%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(232,89,12,0.4),rgba(232,89,12,0.4),transparent);
+  pointer-events:none;
+}
+.step{text-align:center;}
+.step-num{
+  width:72px;height:72px;border-radius:50%;
+  background:var(--saffron);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;
+  font-size:1.4rem;font-weight:900;color:#fff;
+  margin:0 auto 1.2rem;
+  border:3px solid rgba(255,255,255,0.1);
+}
+.step h3{
+  font-size:1rem;font-weight:500;color:#fff;
+  margin-bottom:0.5rem;
+}
+.step p{font-size:0.85rem;color:rgba(255,255,255,0.6);line-height:1.6;font-weight:300;}
+
+/* ── TODAY'S MENU ── */
+#menu{padding:6rem 5%;background:var(--cream);}
+.day-tabs{
+  display:flex;gap:0.5rem;justify-content:center;
+  flex-wrap:wrap;margin-bottom:3rem;
+}
+.day-tab{
+  padding:0.5rem 1.2rem;border-radius:100px;
+  border:1.5px solid var(--border);
+  font-size:0.85rem;font-weight:500;
+  cursor:pointer;background:transparent;
+  color:var(--text2);transition:all 0.2s;
+  font-family:'DM Sans',sans-serif;
+}
+.day-tab.active,.day-tab:hover{
+  background:var(--saffron);color:#fff;border-color:var(--saffron);
+}
+.menu-panel{display:none;}
+.menu-panel.active{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.menu-item-card{
+  background:#fff;border-radius:18px;
+  border:1px solid var(--border);
+  overflow:hidden;
+  transition:transform 0.2s,box-shadow 0.2s;
+}
+.menu-item-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(44,24,16,0.12);}
+.menu-item-img{
+  height:140px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:3.5rem;
+}
+.menu-item-body{padding:1rem 1.2rem 1.2rem;}
+.menu-item-name{
+  font-family:'Playfair Display',serif;
+  font-size:1.05rem;font-weight:700;color:var(--bark);
+  margin-bottom:0.3rem;
+}
+.menu-item-desc{font-size:0.82rem;color:var(--text2);line-height:1.5;margin-bottom:0.8rem;}
+.menu-item-footer{
+  display:flex;align-items:center;justify-content:space-between;
+}
+.menu-item-price{
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem;font-weight:700;color:var(--saffron);
+}
+.veg-badge{
+  font-size:0.7rem;font-weight:500;
+  background:rgba(45,106,79,0.1);color:var(--green);
+  border:1px solid rgba(45,106,79,0.2);
+  padding:0.2rem 0.6rem;border-radius:100px;
+}
+
+/* ── COMBOS / PRICING ── */
+#pricing{
+  padding:6rem 5%;
+  background:linear-gradient(180deg,var(--cream2) 0%,var(--cream) 100%);
+}
+.plans-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1.5rem;align-items:start;
+}
+.plan-card{
+  background:#fff;border-radius:24px;
+  border:1.5px solid var(--border);
+  padding:2rem;
+  position:relative;
+  transition:transform 0.2s;
+}
+.plan-card:hover{transform:translateY(-4px);}
+.plan-card.featured{
+  border-color:var(--saffron);
+  background:var(--bark);color:#fff;
+  transform:scale(1.03);
+}
+.plan-card.featured:hover{transform:scale(1.03) translateY(-4px);}
+.plan-badge{
+  position:absolute;top:-14px;left:50%;transform:translateX(-50%);
+  background:var(--saffron);color:#fff;
+  font-size:0.75rem;font-weight:500;
+  padding:0.3rem 1.2rem;border-radius:100px;
+  white-space:nowrap;
+}
+.plan-icon{font-size:2rem;margin-bottom:1rem;}
+.plan-name{
+  font-family:'Playfair Display',serif;
+  font-size:1.2rem;font-weight:700;color:var(--bark);
+  margin-bottom:0.3rem;
+}
+.plan-card.featured .plan-name{color:#fff;}
+.plan-price{
+  font-family:'Playfair Display',serif;
+  font-size:2.4rem;font-weight:900;color:var(--saffron);
+  line-height:1;margin-bottom:0.2rem;
+}
+.plan-period{font-size:0.82rem;color:var(--text2);margin-bottom:1.5rem;}
+.plan-card.featured .plan-period{color:rgba(255,255,255,0.6);}
+.plan-features{list-style:none;margin-bottom:2rem;}
+.plan-features li{
+  display:flex;align-items:center;gap:0.6rem;
+  font-size:0.88rem;color:var(--text2);
+  padding:0.45rem 0;
+  border-bottom:1px solid var(--border);
+}
+.plan-card.featured .plan-features li{color:rgba(255,255,255,0.75);border-color:rgba(255,255,255,0.1);}
+.plan-features li::before{
+  content:'✓';color:var(--green-light);font-weight:700;font-size:0.9rem;flex-shrink:0;
+}
+.plan-cta{
+  width:100%;padding:0.85rem;border-radius:100px;
+  border:none;font-size:0.95rem;font-weight:500;
+  cursor:pointer;transition:all 0.2s;font-family:'DM Sans',sans-serif;
+}
+.plan-cta-outline{
+  background:transparent;color:var(--saffron);
+  border:1.5px solid var(--saffron);
+}
+.plan-cta-outline:hover{background:var(--saffron);color:#fff;}
+.plan-cta-solid{background:var(--saffron);color:#fff;}
+.plan-cta-solid:hover{background:#fff;color:var(--saffron);}
+
+/* ── ORDER / CONTACT ── */
+#order{padding:6rem 5%;background:var(--bark);color:#fff;}
+#order .section-tag{background:rgba(245,200,66,0.1);color:var(--gold);border-color:rgba(245,200,66,0.2);}
+#order .section-header h2{color:#fff;}
+#order .section-header p{color:rgba(255,255,255,0.6);}
+.order-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+.order-info{color:rgba(255,255,255,0.9);}
+.order-info h3{
+  font-family:'Playfair Display',serif;
+  font-size:1.4rem;font-weight:700;
+  margin-bottom:1.5rem;color:#fff;
+}
+.info-item{
+  display:flex;gap:1rem;
+  margin-bottom:1.5rem;
+  padding-bottom:1.5rem;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.info-icon{
+  font-size:1.3rem;flex-shrink:0;
+  width:44px;height:44px;
+  background:rgba(232,89,12,0.15);
+  border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+}
+.info-text strong{font-weight:500;display:block;margin-bottom:0.2rem;color:#fff;}
+.info-text span{font-size:0.85rem;color:rgba(255,255,255,0.55);font-weight:300;}
+
+.order-form{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:24px;padding:2rem;
+}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;}
+.form-group{margin-bottom:1rem;}
+.form-group label{
+  display:block;font-size:0.82rem;color:rgba(255,255,255,0.65);
+  margin-bottom:0.4rem;font-weight:400;
+}
+.form-group input,
+.form-group select,
+.form-group textarea{
+  width:100%;background:rgba(255,255,255,0.07);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:12px;padding:0.75rem 1rem;
+  color:#fff;font-size:0.9rem;font-family:'DM Sans',sans-serif;
+  outline:none;transition:border 0.2s;
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder{color:rgba(255,255,255,0.3);}
+.form-group select option{background:var(--bark2);color:#fff;}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{border-color:var(--saffron);}
+.form-group textarea{resize:vertical;min-height:90px;}
+.submit-btn{
+  width:100%;padding:1rem;
+  background:var(--saffron);color:#fff;
+  border:none;border-radius:100px;
+  font-size:1rem;font-weight:500;
+  cursor:pointer;transition:background 0.2s;
+  font-family:'DM Sans',sans-serif;
+  margin-top:0.5rem;
+}
+.submit-btn:hover{background:var(--saffron-light);}
+
+/* ── CART DRAWER ── */
+.cart-overlay{
+  display:none;position:fixed;inset:0;z-index:200;
+  background:rgba(0,0,0,0.5);backdrop-filter:blur(4px);
+}
+.cart-overlay.open{display:block;}
+.cart-drawer{
+  position:fixed;top:0;right:0;bottom:0;
+  width:min(400px,100vw);
+  background:var(--cream);
+  z-index:201;
+  transform:translateX(100%);
+  transition:transform 0.3s ease;
+  display:flex;flex-direction:column;
+}
+.cart-drawer.open{transform:translateX(0);}
+.cart-header{
+  padding:1.5rem;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.cart-header h3{
+  font-family:'Playfair Display',serif;
+  font-size:1.3rem;font-weight:700;color:var(--bark);
+}
+.cart-close{
+  background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--text2);
+}
+.cart-items{flex:1;overflow-y:auto;padding:1rem 1.5rem;}
+.cart-empty{
+  text-align:center;padding:3rem 1rem;color:var(--text2);
+}
+.cart-empty-icon{font-size:3rem;margin-bottom:1rem;}
+.cart-item{
+  display:flex;gap:1rem;padding:1rem 0;
+  border-bottom:1px solid var(--border);
+}
+.cart-item-icon{
+  width:56px;height:56px;border-radius:12px;
+  background:var(--cream2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.8rem;flex-shrink:0;
+}
+.cart-item-info{flex:1;min-width:0;}
+.cart-item-name{font-weight:500;font-size:0.9rem;color:var(--bark);}
+.cart-item-price{color:var(--saffron);font-weight:500;font-size:0.85rem;}
+.cart-qty{display:flex;align-items:center;gap:0.5rem;margin-top:0.4rem;}
+.qty-btn{
+  width:24px;height:24px;border-radius:50%;
+  border:1px solid var(--border);background:transparent;
+  cursor:pointer;font-size:0.9rem;color:var(--text2);
+  display:flex;align-items:center;justify-content:center;
+  transition:all 0.15s;
+}
+.qty-btn:hover{background:var(--saffron);color:#fff;border-color:var(--saffron);}
+.qty-num{font-size:0.9rem;font-weight:500;color:var(--bark);}
+.cart-footer{
+  padding:1.5rem;border-top:1px solid var(--border);
+  background:var(--cream);
+}
+.cart-total-row{
+  display:flex;justify-content:space-between;
+  font-size:1rem;font-weight:500;color:var(--bark);
+  margin-bottom:1rem;
+}
+.cart-total-price{
+  font-family:'Playfair Display',serif;
+  font-size:1.3rem;font-weight:700;color:var(--saffron);
+}
+.cart-checkout-btn{
+  width:100%;padding:1rem;
+  background:var(--saffron);color:#fff;
+  border:none;border-radius:100px;
+  font-size:0.95rem;font-weight:500;cursor:pointer;
+  transition:background 0.2s;font-family:'DM Sans',sans-serif;
+}
+.cart-checkout-btn:hover{background:var(--clay);}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--bark2);color:rgba(255,255,255,0.6);
+  padding:3rem 5% 2rem;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:1.5rem;
+}
+.footer-logo{
+  font-family:'Playfair Display',serif;
+  font-size:1.4rem;font-weight:900;color:var(--saffron);
+}
+.footer-copy{font-size:0.82rem;}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(24px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  #hero{grid-template-columns:1fr;padding-top:100px;gap:3rem;}
+  .hero-text{padding-right:0;}
+  .hero-visual{align-items:stretch;}
+  .tiffin-card-main{max-width:100%;}
+  .steps-grid{grid-template-columns:repeat(2,1fr);}
+  .steps-grid::before{display:none;}
+  .menu-panel.active{grid-template-columns:repeat(2,1fr);}
+  .plans-grid{grid-template-columns:1fr;}
+  .plan-card.featured{transform:none;}
+  .order-grid{grid-template-columns:1fr;}
+}
+@media(max-width:600px){
+  nav .nav-links{display:none;}
+  .menu-panel.active{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+  .hero-stats{gap:1.5rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Maru<span>vaan</span></div>
+  <ul class="nav-links">
+    <li><a href="#how">How it works</a></li>
+    <li><a href="#menu">Today's menu</a></li>
+    <li><a href="#pricing">Plans</a></li>
+    <li><a href="#order">Order</a></li>
+  </ul>
+  <button class="nav-cart" onclick="toggleCart()">
+    🛒 Cart <span class="cart-badge" id="cartBadge">0</span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-dots"></div>
+
+  <div class="hero-text">
+    <div class="hero-tag">Now delivering across Sydney</div>
+    <h1>Real food.<br/><em>Every day.</em><br/>Delivered.</h1>
+    <p class="hero-sub">Home-style Indian tiffin made in small batches — balanced, nutritious, and consistent. No oil-dripping takeaway, no guesswork. Just proper food.</p>
+    <div class="hero-ctas">
+      <a href="#menu" class="btn-primary">See today's menu</a>
+      <a href="#pricing" class="btn-secondary">View plans</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Menu items daily</div>
+      </div>
+      <div>
+        <div class="stat-num">$15</div>
+        <div class="stat-label">Per meal</div>
+      </div>
+      <div>
+        <div class="stat-num">12 PM</div>
+        <div class="stat-label">Daily delivery</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="tiffin-card tiffin-card-main">
+      <div class="tiffin-img">🍱</div>
+      <div class="tiffin-card-body">
+        <div class="tiffin-day">Today · Monday</div>
+        <div class="tiffin-name">Dal Tadka Thali</div>
+        <div class="tiffin-items">
+          <span class="item-chip">🫘 Dal</span>
+          <span class="item-chip">🥔 Aloo Sabzi</span>
+          <span class="item-chip">🫓 Roti</span>
+          <span class="item-chip">🍚 Rice</span>
+          <span class="item-chip">🥗 Salad</span>
+        </div>
+        <div class="tiffin-price-row">
+          <span class="price-tag">$16</span>
+          <button class="add-btn" onclick="addToCart('Dal Tadka Thali',16,'🍱')">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="mini-cards">
+      <div class="mini-card">
+        <div class="mini-icon">🏠</div>
+        <div class="mini-title">Home-style cooking</div>
+        <div class="mini-val">Not a restaurant</div>
+      </div>
+      <div class="mini-card">
+        <div class="mini-icon">🌿</div>
+        <div class="mini-title">Fresh daily</div>
+        <div class="mini-val">Small-batch prep</div>
+      </div>
+      <div class="mini-card">
+        <div class="mini-icon">🚴</div>
+        <div class="mini-title">Delivered by noon</div>
+        <div class="mini-val">Sydney suburbs</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="section-header">
+    <div class="section-tag">Simple process</div>
+    <h2>How Maruvaan works</h2>
+    <p>Four steps from hungry to happy — no cooking, no stress.</p>
+  </div>
+  <div class="steps-grid">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>Choose your plan</h3>
+      <p>Pick a daily, weekly, or monthly tiffin plan that fits your life and appetite.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>We cook fresh</h3>
+      <p>Every morning, meals are cooked in small batches — balanced, home-style, no shortcuts.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>Packed with care</h3>
+      <p>Each tiffin is sealed in leak-proof, heat-safe containers and labelled for your order.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <h3>Delivered by noon</h3>
+      <p>Hot food arrives at your door every day — no waiting, no wondering what's for lunch.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TODAY'S MENU -->
+<section id="menu">
+  <div class="section-header">
+    <div class="section-tag">Weekly rotation</div>
+    <h2>This week's menu</h2>
+    <p>Our menu rotates weekly so you never get bored. Everything is vegetarian and freshly prepared.</p>
+  </div>
+
+  <div class="day-tabs">
+    <button class="day-tab active" onclick="showDay('mon',this)">Monday</button>
+    <button class="day-tab" onclick="showDay('tue',this)">Tuesday</button>
+    <button class="day-tab" onclick="showDay('wed',this)">Wednesday</button>
+    <button class="day-tab" onclick="showDay('thu',this)">Thursday</button>
+    <button class="day-tab" onclick="showDay('fri',this)">Friday</button>
+  </div>
+
+  <div class="menu-panel active" id="menu-mon">
+    <div class="menu-item-card">
+      <div class="menu-item-img" style="background:linear-gradient(135deg,#F97316,#D4900A);">🫘</div>
+      <div class="menu-item-body">
+        <div class="menu-item-name">Dal Tadka</div>
+        <div class="menu-item-desc">Slow-cooked yellow dal with cumin-garlic tadka. Served with roti and rice.</div>
+        <div class="menu-item-footer">
+          <span class="menu-item-price">$16</span>
+          <span class="veg-badge">🌿 Veg</span>
+          <button class="add-btn" onclick="addToCart('Dal Tadka',16,'🫘')">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="menu-item-card">
+      <div class="menu-item-img" style="background:linear-gradient(135deg,#FEF3E2,#F5C842);">🥔</div>
+      <div class="menu-item-body">
+        <div class="menu-item-name">Aloo Sabzi</div>
+        <div class="menu-item-desc">Spiced potato curry with tomatoes and green chilli. A weekday staple.</div>
+        <div class="menu-item-footer">
+          <span class="menu-item-price">$15</span>
+          <span class="veg-badge">🌿 Veg</span>
+          <button class="add-btn" onclick="addToCart('Aloo Sabzi',15,'🥔')">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="menu-item-card">
+      <div class="menu-item-img" style="background:linear-gradient(135deg,#2D6A4F,#52B788);">🥗</div>
+      <div class="menu-item-body">
+        <div class="menu-item-name">Kachumber Salad</div>
+        <div class="menu-item-desc">Crisp cucumber, tomato, onion with lemon and chaat masala.</div>
+        <div class="menu-item-footer">
+          <span class="menu-item-price">$10</span>
+          <span class="veg-badge">🌿 Veg</span>
+          <button class="add-btn" onclick="addToCart('Kachumber Salad',10,'🥗')">+</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="menu-panel" id="menu-tue">
+    <div class="menu-item-card">
+      <div class="menu-item-img" style="background:linear-gradient(135deg,#7C3A1E,#E8590C);">🫘</div>
+      <div class="menu-item-body">
+        <div class="menu-item-name">Rajma Masala</div>
+        <div class="menu-item-desc">Slow-cooked kidney beans in rich tomato-onion gravy. Classic Punjabi comfort.</div>
+        <div class="menu-item-footer">
+          <span class="menu-item-price">$16</span>
+          <span class="veg-badge">🌿 Veg</span>
+          <button class="add-btn" onclick="addToCart('Rajma Masala',16,'🫘')">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="menu-item-card">
+      <div class="menu-item-img" style="background:linear-gradient(135deg,#FFF8F0,#F5C842);">🥦</div>
+      <div class="menu-item-body">
+        <div class="menu-item-name">Mixed Veg</div>
+        <div class="menu-item-desc">Seasonal vegetables in a light home-style masala. Served with roti.</div>
+        <div class="menu-item-footer">
+          <span class="menu-item-price">$15</span>
+          <span class="veg-badge">🌿 Veg</span>
+          <button class="add-btn" onclick="addToCart('Mixed Veg',15,'🥦')">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="menu-item-card">
+      <div class="menu-item-img" style="background:linear-gradient(135deg,#FEF3E2,#D4900A);">🫓</div>
+      <div class="menu-item-body">
+        <div class="menu-item-name">Roti (3 pcs)</div>
+        <div class="menu-item-desc">Soft whole-wheat rotis made fresh each morning. Add-on to any meal.</div>
+        <div class="menu-item-footer">
+          <span class="menu-item-price">$8</span>
+          <span class="veg-badge">🌿 Veg</span>
+          <button class="add-btn" onclick="addToCart('Roti (3 pcs)',8,'🫓')">+</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="menu-panel" id="menu-wed">
+    <div class="menu-item-card">
+      <div class="menu-item-img" style="background:linear-gradient(135deg,#D4900A,#F5C842);">🫘</div>
+      <div class="menu-item-body">
+        <div class="menu-item-name">Chole</div>
+        <div class="menu-item-desc">Bold Amritsari-style chickpea curry with dried mango powder and spices.</div>
+        <div class="menu-item-footer">
+          <span class="menu-item-price">$16</span>
+          <span class="veg-badge">🌿 Veg</span>
+          <button class="add-btn" onclick="addToCart('Chole',16,'🫘')">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="menu-item-card">
+      <div class="menu-item-img" style="background:linear-gradient(135deg,#FFF8F0,#E8590C);">🍚</div>
+      <div class="menu-item-body">
+        <div class="menu-item-name">Jeera Rice</div>
+        <div class="menu-item-desc">Basmati rice tempered with whole cumin. Light, fragrant, and fluffy.</div>
+        <div class="menu-item-footer">
+          <span class="menu-item-price">$11</span>
+          <span class="veg-badge">🌿 Veg</span>
+          <button class="add-btn" onclick="addToCart('Jeera Rice',11,'🍚')">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="menu-item-card">
+      <div class="menu-item-img" style="background:linear-gradient(135deg,#2C1810,#7C3A1E);">🥣</div>
+      <div class="menu-item-body">
+        <div class="menu-item-name">Raita</div>
+        <div class="menu-item-desc">Cool yoghurt with roasted cumin, cucumber and coriander. Perfect with chole.</div>
+        <div class="menu-item-footer">
+          <span class="menu-item-price">$9</span>
+          <span class="veg-badge">🌿 Veg</span>
+          <button class="add-btn" onclick="addToCart('Raita',9,'🥣')">+</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="menu-panel" id="menu-thu">
+    <div class="menu-item-card">
+      <div class="menu-item-img" style="background:linear-gradient(135deg,#FFF8F0,#D4900A);">🧀</div>
+      <div class="menu-item-body">
+        <div class="menu-item-name">Paneer Butter Masala</div>
+        <div class="menu-item-desc">Soft cottage cheese in a silky tomato-cream gravy. Rich and satisfying.</div>
+        <div class="menu-item-footer">
+          <span class="menu-item-price">$17</span>
+          <span class="veg-badge">🌿 Veg</span>
+          <button class="add-btn" onclick="addToCart('Paneer Butter Masala',17,'🧀')">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="menu-item-card">
+      <div class="menu-item-img" style="background:linear-gradient(135deg,#E8590C,#F97316);">🫓</div>
+      <div class="menu-item-body">
+        <div class="menu-item-name">Tandoori Roti</div>
+        <div class="menu-item-desc">Thicker, slightly charred whole-wheat roti — perfect with paneer gravies.</div>
+        <div class="menu-item-footer">
+          <span class="menu-item-price">$9</span>
+          <span class="veg-badge">🌿 Veg</span>
+          <button class="add-btn" onclick="addToCart('Tandoori Roti',9,'🫓')">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="menu-item-card">
+      <div class="menu-item-img" style="background:linear-gradient(135deg,#2D6A4F,#52B788);">🥗</div>
+      <div class="menu-item-body">
+        <div class="menu-item-name">Green Salad</div>
+        <div class="menu-item-desc">Fresh lettuce, cucumber and mint with a light lemon dressing.</div>
+        <div class="menu-item-footer">
+          <span class="menu-item-price">$9</span>
+          <span class="veg-badge">🌿 Veg</span>
+          <button class="add-btn" onclick="addToCart('Green Salad',9,'🥗')">+</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="menu-panel" id="menu-fri">
+    <div class="menu-item-card">
+      <div class="menu-item-img" style="background:linear-gradient(135deg,#F5C842,#D4900A);">🍲</div>
+      <div class="menu-item-body">
+        <div class="menu-item-name">Khichdi</div>
+        <div class="menu-item-desc">One-pot rice and lentil porridge with turmeric and ghee. Comforting and light.</div>
+        <div class="menu-item-footer">
+          <span class="menu-item-price">$15</span>
+          <span class="veg-badge">🌿 Veg</span>
+          <button class="add-btn" onclick="addToCart('Khichdi',15,'🍲')">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="menu-item-card">
+      <div class="menu-item-img" style="background:linear-gradient(135deg,#FFF8F0,#E8590C);">🥛</div>
+      <div class="menu-item-body">
+        <div class="menu-item-name">Curd</div>
+        <div class="menu-item-desc">Fresh set yoghurt — plain or with a pinch of salt. Pairs perfectly with khichdi.</div>
+        <div class="menu-item-footer">
+          <span class="menu-item-price">$8</span>
+          <span class="veg-badge">🌿 Veg</span>
+          <button class="add-btn" onclick="addToCart('Curd',8,'🥛')">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="menu-item-card">
+      <div class="menu-item-img" style="background:linear-gradient(135deg,#7C3A1E,#F97316);">🥒</div>
+      <div class="menu-item-body">
+        <div class="menu-item-name">Achar (Pickle)</div>
+        <div class="menu-item-desc">Traditional mixed pickle — a punchy, tangy accompaniment to any tiffin.</div>
+        <div class="menu-item-footer">
+          <span class="menu-item-price">$7</span>
+          <span class="veg-badge">🌿 Veg</span>
+          <button class="add-btn" onclick="addToCart('Achar',7,'🥒')">+</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING / PLANS -->
+<section id="pricing">
+  <div class="section-header">
+    <div class="section-tag">Subscription plans</div>
+    <h2>Pick your combo</h2>
+    <p>Subscribe and save. The more you commit, the less you spend per meal.</p>
+  </div>
+  <div class="plans-grid">
+    <div class="plan-card">
+      <div class="plan-icon">☀️</div>
+      <div class="plan-name">Daily Tiffin</div>
+      <div class="plan-price">$16<span style="font-size:1rem;font-weight:400;color:var(--text2)">/meal</span></div>
+      <div class="plan-period">Order per day, no commitment</div>
+      <ul class="plan-features">
+        <li>1 meal per order</li>
+        <li>Dal + sabzi + roti + rice + salad</li>
+        <li>WhatsApp order by 9 AM</li>
+        <li>Delivered by noon</li>
+        <li>No subscription required</li>
+      </ul>
+      <button class="plan-cta plan-cta-outline" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">Order today</button>
+    </div>
+
+    <div class="plan-card featured">
+      <div class="plan-badge">Most popular</div>
+      <div class="plan-icon">🗓️</div>
+      <div class="plan-name">Weekly Plan</div>
+      <div class="plan-price">$80</div>
+      <div class="plan-period">5 meals per week · save $0</div>
+      <ul class="plan-features">
+        <li>5 meals (Mon–Fri)</li>
+        <li>Full rotating weekly menu</li>
+        <li>Priority delivery slot</li>
+        <li>Customise lunch or dinner</li>
+        <li>WhatsApp updates daily</li>
+      </ul>
+      <button class="plan-cta plan-cta-solid" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">Get weekly plan</button>
+    </div>
+
+    <div class="plan-card">
+      <div class="plan-icon">📦</div>
+      <div class="plan-name">Monthly Plan</div>
+      <div class="plan-price">$300<span style="font-size:1rem;font-weight:400;color:var(--text2)">/mo</span></div>
+      <div class="plan-period">~20 meals · best value</div>
+      <ul class="plan-features">
+        <li>~20 meals per month</li>
+        <li>Lunch or dinner option</li>
+        <li>Locked-in pricing</li>
+        <li>Dedicated delivery slot</li>
+        <li>Free add-on once a week</li>
+      </ul>
+      <button class="plan-cta plan-cta-outline" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">Subscribe monthly</button>
+    </div>
+  </div>
+</section>
+
+<!-- ORDER / CONTACT -->
+<section id="order">
+  <div class="section-header">
+    <div class="section-tag">Place your order</div>
+    <h2>Ready to eat well?</h2>
+    <p>Fill in your details and we'll confirm via WhatsApp within the hour.</p>
+  </div>
+  <div class="order-grid">
+    <div class="order-info">
+      <h3>Good to know</h3>
+      <div class="info-item">
+        <div class="info-icon">⏰</div>
+        <div class="info-text">
+          <strong>Order by 9 AM</strong>
+          <span>For same-day delivery — cutoff is 9 AM daily.</span>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">🚴</div>
+        <div class="info-text">
+          <strong>Delivered by noon</strong>
+          <span>We deliver across Sydney suburbs. Confirm your area first.</span>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">💬</div>
+        <div class="info-text">
+          <strong>WhatsApp confirmation</strong>
+          <span>Every order is confirmed over WhatsApp. Fast and personal.</span>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">💳</div>
+        <div class="info-text">
+          <strong>Pay via Stripe or bank transfer</strong>
+          <span>Weekly and monthly plans require payment upfront.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="order-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label>First name</label>
+          <input type="text" placeholder="Aryan"/>
+        </div>
+        <div class="form-group">
+          <label>Last name</label>
+          <input type="text" placeholder="Sharma"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>WhatsApp number</label>
+        <input type="tel" placeholder="+61 4XX XXX XXX"/>
+      </div>
+      <div class="form-group">
+        <label>Suburb / delivery area</label>
+        <input type="text" placeholder="e.g. Parramatta, Ultimo, Burwood"/>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Plan</label>
+          <select>
+            <option>Daily tiffin</option>
+            <option>Weekly plan</option>
+            <option>Monthly plan</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Meal preference</label>
+          <select>
+            <option>Lunch only</option>
+            <option>Dinner only</option>
+            <option>Both</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Dietary notes or special requests</label>
+        <textarea placeholder="e.g. no onion, extra roti, mild spice…"></textarea>
+      </div>
+      <button class="submit-btn" onclick="handleSubmit()">Send my order request →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Maruvaan</div>
+  <div class="footer-copy">© 2025 Maruvaan · Sydney, Australia · Home-style tiffin service</div>
+  <div style="font-size:0.82rem;">Made with ❤️ for busy stomachs</div>
+</footer>
+
+<!-- CART DRAWER -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <h3>Your tiffin cart</h3>
+    <button class="cart-close" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty">
+      <div class="cart-empty-icon">🍱</div>
+      <p style="color:var(--text2);font-size:0.9rem;">Your cart is empty.<br/>Add meals from today's menu.</p>
+    </div>
+  </div>
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div class="cart-total-row">
+      <span>Total</span>
+      <span class="cart-total-price" id="cartTotal">$0</span>
+    </div>
+    <button class="cart-checkout-btn" onclick="checkout()">Proceed to order →</button>
+  </div>
+</div>
+
+<script>
+let cart = [];
+
+function addToCart(name, price, icon) {
+  const existing = cart.find(i => i.name === name);
+  if (existing) { existing.qty++; }
+  else { cart.push({ name, price, icon, qty: 1 }); }
+  renderCart();
+  if (!document.getElementById('cartDrawer').classList.contains('open')) {
+    toggleCart();
+  }
+}
+
+function renderCart() {
+  const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  const count = cart.reduce((s, i) => s + i.qty, 0);
+  document.getElementById('cartBadge').textContent = count;
+
+  const el = document.getElementById('cartItems');
+  const footer = document.getElementById('cartFooter');
+
+  if (!cart.length) {
+    el.innerHTML = `<div class="cart-empty"><div class="cart-empty-icon">🍱</div><p style="color:var(--text2);font-size:0.9rem;">Your cart is empty.<br/>Add meals from today's menu.</p></div>`;
+    footer.style.display = 'none';
+    return;
+  }
+
+  footer.style.display = 'block';
+  document.getElementById('cartTotal').textContent = '$' + total;
+
+  el.innerHTML = cart.map((item, idx) => `
+    <div class="cart-item">
+      <div class="cart-item-icon">${item.icon}</div>
+      <div class="cart-item-info">
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-price">$${item.price} each</div>
+        <div class="cart-qty">
+          <button class="qty-btn" onclick="updateQty(${idx},-1)">−</button>
+          <span class="qty-num">${item.qty}</span>
+          <button class="qty-btn" onclick="updateQty(${idx},1)">+</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function updateQty(idx, delta) {
+  cart[idx].qty += delta;
+  if (cart[idx].qty <= 0) cart.splice(idx, 1);
+  renderCart();
+}
+
+function toggleCart() {
+  const overlay = document.getElementById('cartOverlay');
+  const drawer = document.getElementById('cartDrawer');
+  overlay.classList.toggle('open');
+  drawer.classList.toggle('open');
+}
+
+function checkout() {
+  toggleCart();
+  document.getElementById('order').scrollIntoView({ behavior: 'smooth' });
+}
+
+function showDay(day, btn) {
+  document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.day-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('menu-' + day).classList.add('active');
+  btn.classList.add('active');
+}
+
+function handleSubmit() {
+  const btn = event.target;
+  btn.textContent = '✓ Request sent! We\'ll WhatsApp you shortly.';
+  btn.style.background = 'var(--green)';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.textContent = 'Send my order request →';
+    btn.style.background = '';
+    btn.disabled = false;
+  }, 4000);
+}
+</script>
+</body>
+</html>
