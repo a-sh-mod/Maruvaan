@@ -1,0 +1,37 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: images
+
+collections:
+  - name: menu
+    label: Menu Items
+    folder: _menu
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Name, name: title, widget: string }
+      - { label: Day, name: day, widget: select, options: [Monday, Tuesday, Wednesday, Thursday, Friday] }
+      - { label: Description, name: description, widget: text }
+      - { label: Price, name: price, widget: number }
+      - { label: Emoji, name: emoji, widget: string }
+      - { label: Available, name: available, widget: boolean, default: true }
+
+  - name: settings
+    label: Site Settings
+    files:
+      - label: General
+        name: general
+        file: _settings/general.json
+        fields:
+          - { label: Delivery time, name: delivery_time, widget: string }
+          - { label: Order cutoff, name: order_cutoff, widget: string }
+          - { label: Delivery suburbs, name: suburbs, widget: text }
+          - label: Plans
+            name: plans
+            widget: list
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: Price, name: price, widget: number }
+              - { label: Description, name: description, widget: string }
