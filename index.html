@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Maruvaan — Home-style Tiffin, Sydney</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --saffron: #E8590C;
+      --saffron-light: #F97316;
+      --turmeric: #D4900A;
+      --gold: #F5C842;
+      --cream: #FFF8F0;
+      --cream2: #FEF3E2;
+      --bark: #2C1810;
+      --bark2: #3D2314;
+      --clay: #7C3A1E;
+      --green: #2D6A4F;
+      --green-light: #52B788;
+      --text: #1A0F08;
+      --text2: #5C3D2E;
+      --border: rgba(44,24,16,0.12);
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:68px;background:rgba(255,248,240,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+    .nav-logo{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:var(--saffron);letter-spacing:-0.5px;}
+    .nav-logo span{color:var(--bark);}
+    .nav-links{display:flex;gap:2rem;list-style:none;}
+    .nav-links a{font-size:0.88rem;font-weight:500;color:var(--text2);text-decoration:none;transition:color 0.2s;}
+    .nav-links a:hover{color:var(--saffron);}
+    .nav-cart{display:flex;align-items:center;gap:0.5rem;background:var(--saffron);color:#fff;border:none;padding:0.5rem 1.2rem;border-radius:100px;font-size:0.88rem;font-weight:500;cursor:pointer;transition:background 0.2s;font-family:'DM Sans',sans-serif;}
+    .nav-cart:hover{background:var(--clay);}
+    .cart-badge{background:#fff;color:var(--saffron);font-size:0.75rem;font-weight:700;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+
+    /* HERO */
+    #hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:68px 5% 0;background:var(--cream);position:relative;overflow:hidden;}
+    .hero-bg-pattern{position:absolute;inset:0;background-image:radial-gradient(circle at 80% 20%,rgba(232,89,12,0.08) 0%,transparent 50%),radial-gradient(circle at 20% 80%,rgba(212,144,10,0.06) 0%,transparent 50%);pointer-events:none;}
+    .hero-dots{position:absolute;right:0;top:50%;transform:translateY(-50%);width:340px;height:340px;opacity:0.07;background-image:radial-gradient(circle,var(--saffron) 1.5px,transparent 1.5px);background-size:24px 24px;pointer-events:none;}
+    .hero-text{padding-right:3rem;animation:fadeUp 0.8s ease both;}
+    .hero-tag{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(232,89,12,0.1);color:var(--saffron);font-size:0.8rem;font-weight:500;padding:0.35rem 1rem;border-radius:100px;margin-bottom:1.5rem;border:1px solid rgba(232,89,12,0.2);}
+    .hero-tag::before{content:'●';font-size:0.5rem;}
+    h1{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,5vw,4.2rem);line-height:1.1;font-weight:900;color:var(--bark);margin-bottom:1.5rem;}
+    h1 em{font-style:italic;color:var(--saffron);}
+    .hero-sub{font-size:1.05rem;line-height:1.7;color:var(--text2);max-width:440px;margin-bottom:2.5rem;font-weight:300;}
+    .hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;}
+    .btn-primary{background:var(--saffron);color:#fff;border:none;padding:0.85rem 2rem;border-radius:100px;font-size:0.95rem;font-weight:500;cursor:pointer;text-decoration:none;transition:all 0.2s;font-family:'DM Sans',sans-serif;display:inline-block;}
+    .btn-primary:hover{background:var(--clay);transform:translateY(-1px);}
+    .btn-secondary{background:transparent;color:var(--bark);border:1.5px solid var(--bark);padding:0.85rem 2rem;border-radius:100px;font-size:0.95rem;font-weight:500;cursor:pointer;text-decoration:none;transition:all 0.2s;font-family:'DM Sans',sans-serif;display:inline-block;}
+    .btn-secondary:hover{background:var(--bark);color:#fff;}
+    .hero-stats{display:flex;gap:2.5rem;margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);}
+    .stat-num{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:var(--saffron);}
+    .stat-label{font-size:0.82rem;color:var(--text2);font-weight:400;}
+    .hero-visual{display:flex;flex-direction:column;gap:1rem;align-items:flex-end;animation:fadeUp 0.8s 0.2s ease both;position:relative;z-index:1;}
+    .tiffin-card{background:#fff;border-radius:20px;border:1px solid var(--border);overflow:hidden;box-shadow:0 8px 40px rgba(44,24,16,0.1);}
+    .tiffin-card-main{width:100%;max-width:360px;}
+    .tiffin-img{height:200px;background:linear-gradient(135deg,#F97316 0%,#D4900A 100%);display:flex;align-items:center;justify-content:center;font-size:5rem;}
+    .tiffin-card-body{padding:1.2rem 1.5rem;}
+    .tiffin-day{font-size:0.75rem;font-weight:500;color:var(--saffron);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.3rem;}
+    .tiffin-name{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--bark);margin-bottom:0.5rem;}
+    .tiffin-items{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1rem;}
+    .item-chip{background:var(--cream2);color:var(--text2);font-size:0.75rem;padding:0.25rem 0.7rem;border-radius:100px;border:1px solid var(--border);}
+    .tiffin-price-row{display:flex;align-items:center;justify-content:space-between;}
+    .price-tag{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--saffron);}
+    .add-btn{background:var(--saffron);color:#fff;border:none;width:36px;height:36px;border-radius:50%;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s;}
+    .add-btn:hover{background:var(--clay);}
+    .mini-cards{display:flex;gap:0.8rem;}
+    .mini-card{background:#fff;border-radius:14px;border:1px solid var(--border);padding:1rem;flex:1;min-width:0;box-shadow:0 4px 20px rgba(44,24,16,0.07);}
+    .mini-icon{font-size:1.5rem;margin-bottom:0.4rem;}
+    .mini-title{font-size:0.82rem;font-weight:500;color:var(--bark);}
+    .mini-val{font-size:0.75rem;color:var(--text2);}
+
+    /* SECTION HEADER */
+    .section-header{text-align:center;margin-bottom:3.5rem;}
+    .section-tag{display:inline-block;background:rgba(232,89,12,0.1);color:var(--saffron);font-size:0.78rem;font-weight:500;padding:0.3rem 1rem;border-radius:100px;border:1px solid rgba(232,89,12,0.2);margin-bottom:1rem;text-transform:uppercase;letter-spacing:1px;}
+    .section-header h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:900;color:var(--bark);line-height:1.2;}
+    .section-header p{color:var(--text2);font-size:1rem;max-width:520px;margin:0.8rem auto 0;line-height:1.7;font-weight:300;}
+
+    /* HOW IT WORKS */
+    #how{padding:6rem 5%;background:var(--bark);color:#fff;position:relative;overflow:hidden;}
+    #how::before{content:'';position:absolute;top:-60px;left:-60px;width:260px;height:260px;border-radius:50%;background:rgba(232,89,12,0.15);filter:blur(60px);pointer-events:none;}
+    #how .section-header h2{color:#fff;}
+    #how .section-header p{color:rgba(255,255,255,0.65);}
+    #how .section-tag{background:rgba(232,89,12,0.2);color:var(--gold);border-color:rgba(245,200,66,0.2);}
+    .steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;position:relative;}
+    .steps-grid::before{content:'';position:absolute;top:36px;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,rgba(232,89,12,0.4),rgba(232,89,12,0.4),transparent);pointer-events:none;}
+    .step{text-align:center;}
+    .step-num{width:72px;height:72px;border-radius:50%;background:var(--saffron);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:#fff;margin:0 auto 1.2rem;border:3px solid rgba(255,255,255,0.1);}
+    .step h3{font-size:1rem;font-weight:500;color:#fff;margin-bottom:0.5rem;}
+    .step p{font-size:0.85rem;color:rgba(255,255,255,0.6);line-height:1.6;font-weight:300;}
+
+    /* MENU */
+    #menu{padding:6rem 5%;background:var(--cream);}
+    .day-tabs{display:flex;gap:0.5rem;justify-content:center;flex-wrap:wrap;margin-bottom:3rem;}
+    .day-tab{padding:0.5rem 1.2rem;border-radius:100px;border:1.5px solid var(--border);font-size:0.85rem;font-weight:500;cursor:pointer;background:transparent;color:var(--text2);transition:all 0.2s;font-family:'DM Sans',sans-serif;}
+    .day-tab.active,.day-tab:hover{background:var(--saffron);color:#fff;border-color:var(--saffron);}
+    .menu-panel{display:none;}
+    .menu-panel.active{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+    .menu-item-card{background:#fff;border-radius:18px;border:1px solid var(--border);overflow:hidden;transition:transform 0.2s,box-shadow 0.2s;}
+    .menu-item-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(44,24,16,0.12);}
+    .menu-item-img{height:140px;display:flex;align-items:center;justify-content:center;font-size:3.5rem;}
+    .menu-item-body{padding:1rem 1.2rem 1.2rem;}
+    .menu-item-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--bark);margin-bottom:0.3rem;}
+    .menu-item-desc{font-size:0.82rem;color:var(--text2);line-height:1.5;margin-bottom:0.8rem;}
+    .menu-item-footer{display:flex;align-items:center;justify-content:space-between;}
+    .menu-item-price{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--saffron);}
+    .veg-badge{font-size:0.7rem;font-weight:500;background:rgba(45,106,79,0.1);color:var(--green);border:1px solid rgba(45,106,79,0.2);padding:0.2rem 0.6rem;border-radius:100px;}
+    .menu-loading{text-align:center;padding:3rem;color:var(--text2);grid-column:1/-1;}
+    .menu-empty{text-align:center;padding:3rem;color:var(--text2);font-size:0.9rem;grid-column:1/-1;}
+
+    /* PRICING */
+    #pricing{padding:6rem 5%;background:linear-gradient(180deg,var(--cream2) 0%,var(--cream) 100%);}
+    .plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;align-items:start;}
+    .plan-card{background:#fff;border-radius:24px;border:1.5px solid var(--border);padding:2rem;position:relative;transition:transform 0.2s;}
+    .plan-card:hover{transform:translateY(-4px);}
+    .plan-card.featured{border-color:var(--saffron);background:var(--bark);color:#fff;transform:scale(1.03);}
+    .plan-card.featured:hover{transform:scale(1.03) translateY(-4px);}
+    .plan-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--saffron);color:#fff;font-size:0.75rem;font-weight:500;padding:0.3rem 1.2rem;border-radius:100px;white-space:nowrap;}
+    .plan-icon{font-size:2rem;margin-bottom:1rem;}
+    .plan-name{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--bark);margin-bottom:0.3rem;}
+    .plan-card.featured .plan-name{color:#fff;}
+    .plan-price{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:900;color:var(--saffron);line-height:1;margin-bottom:0.2rem;}
+    .plan-period{font-size:0.82rem;color:var(--text2);margin-bottom:1.5rem;}
+    .plan-card.featured .plan-period{color:rgba(255,255,255,0.6);}
+    .plan-features{list-style:none;margin-bottom:2rem;}
+    .plan-features li{display:flex;align-items:center;gap:0.6rem;font-size:0.88rem;color:var(--text2);padding:0.45rem 0;border-bottom:1px solid var(--border);}
+    .plan-card.featured .plan-features li{color:rgba(255,255,255,0.75);border-color:rgba(255,255,255,0.1);}
+    .plan-features li::before{content:'✓';color:var(--green-light);font-weight:700;font-size:0.9rem;flex-shrink:0;}
+    .plan-cta{width:100%;padding:0.85rem;border-radius:100px;border:none;font-size:0.95rem;font-weight:500;cursor:pointer;transition:all 0.2s;font-family:'DM Sans',sans-serif;}
+    .plan-cta-outline{background:transparent;color:var(--saffron);border:1.5px solid var(--saffron);}
+    .plan-cta-outline:hover{background:var(--saffron);color:#fff;}
+    .plan-cta-solid{background:var(--saffron);color:#fff;}
+    .plan-cta-solid:hover{background:#fff;color:var(--saffron);}
+
+    /* ORDER */
+    #order{padding:6rem 5%;background:var(--bark);color:#fff;}
+    #order .section-tag{background:rgba(245,200,66,0.1);color:var(--gold);border-color:rgba(245,200,66,0.2);}
+    #order .section-header h2{color:#fff;}
+    #order .section-header p{color:rgba(255,255,255,0.6);}
+    .order-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+    .order-info h3{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;margin-bottom:1.5rem;color:#fff;}
+    .info-item{display:flex;gap:1rem;margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.08);}
+    .info-icon{font-size:1.3rem;flex-shrink:0;width:44px;height:44px;background:rgba(232,89,12,0.15);border-radius:12px;display:flex;align-items:center;justify-content:center;}
+    .info-text strong{font-weight:500;display:block;margin-bottom:0.2rem;color:#fff;}
+    .info-text span{font-size:0.85rem;color:rgba(255,255,255,0.55);font-weight:300;}
+    .order-form{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:24px;padding:2rem;}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;}
+    .form-group{margin-bottom:1rem;}
+    .form-group label{display:block;font-size:0.82rem;color:rgba(255,255,255,0.65);margin-bottom:0.4rem;font-weight:400;}
+    .form-group input,.form-group select,.form-group textarea{width:100%;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:0.75rem 1rem;color:#fff;font-size:0.9rem;font-family:'DM Sans',sans-serif;outline:none;transition:border 0.2s;}
+    .form-group input::placeholder,.form-group textarea::placeholder{color:rgba(255,255,255,0.3);}
+    .form-group select option{background:var(--bark2);color:#fff;}
+    .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--saffron);}
+    .form-group textarea{resize:vertical;min-height:90px;}
+    .submit-btn{width:100%;padding:1rem;background:var(--saffron);color:#fff;border:none;border-radius:100px;font-size:1rem;font-weight:500;cursor:pointer;transition:background 0.2s;font-family:'DM Sans',sans-serif;margin-top:0.5rem;}
+    .submit-btn:hover{background:var(--saffron-light);}
+
+    /* CART */
+    .cart-overlay{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.5);backdrop-filter:blur(4px);}
+    .cart-overlay.open{display:block;}
+    .cart-drawer{position:fixed;top:0;right:0;bottom:0;width:min(400px,100vw);background:var(--cream);z-index:201;transform:translateX(100%);transition:transform 0.3s ease;display:flex;flex-direction:column;}
+    .cart-drawer.open{transform:translateX(0);}
+    .cart-header{padding:1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+    .cart-header h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--bark);}
+    .cart-close{background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--text2);}
+    .cart-items{flex:1;overflow-y:auto;padding:1rem 1.5rem;}
+    .cart-empty{text-align:center;padding:3rem 1rem;color:var(--text2);}
+    .cart-empty-icon{font-size:3rem;margin-bottom:1rem;}
+    .cart-item{display:flex;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--border);}
+    .cart-item-icon{width:56px;height:56px;border-radius:12px;background:var(--cream2);display:flex;align-items:center;justify-content:center;font-size:1.8rem;flex-shrink:0;}
+    .cart-item-info{flex:1;min-width:0;}
+    .cart-item-name{font-weight:500;font-size:0.9rem;color:var(--bark);}
+    .cart-item-price{color:var(--saffron);font-weight:500;font-size:0.85rem;}
+    .cart-qty{display:flex;align-items:center;gap:0.5rem;margin-top:0.4rem;}
+    .qty-btn{width:24px;height:24px;border-radius:50%;border:1px solid var(--border);background:transparent;cursor:pointer;font-size:0.9rem;color:var(--text2);display:flex;align-items:center;justify-content:center;transition:all 0.15s;}
+    .qty-btn:hover{background:var(--saffron);color:#fff;border-color:var(--saffron);}
+    .qty-num{font-size:0.9rem;font-weight:500;color:var(--bark);}
+    .cart-footer{padding:1.5rem;border-top:1px solid var(--border);background:var(--cream);}
+    .cart-total-row{display:flex;justify-content:space-between;font-size:1rem;font-weight:500;color:var(--bark);margin-bottom:1rem;}
+    .cart-total-price{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--saffron);}
+    .cart-checkout-btn{width:100%;padding:1rem;background:var(--saffron);color:#fff;border:none;border-radius:100px;font-size:0.95rem;font-weight:500;cursor:pointer;transition:background 0.2s;font-family:'DM Sans',sans-serif;}
+    .cart-checkout-btn:hover{background:var(--clay);}
+
+    /* FOOTER */
+    footer{background:var(--bark2);color:rgba(255,255,255,0.6);padding:3rem 5% 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;}
+    .footer-logo{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:var(--saffron);}
+
+    /* ANIMATIONS */
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+      #hero{grid-template-columns:1fr;padding-top:100px;gap:3rem;}
+      .hero-text{padding-right:0;}
+      .hero-visual{align-items:stretch;}
+      .tiffin-card-main{max-width:100%;}
+      .steps-grid{grid-template-columns:repeat(2,1fr);}
+      .steps-grid::before{display:none;}
+      .menu-panel.active{grid-template-columns:repeat(2,1fr);}
+      .plans-grid{grid-template-columns:1fr;}
+      .plan-card.featured{transform:none;}
+      .order-grid{grid-template-columns:1fr;}
+    }
+    @media(max-width:600px){
+      nav .nav-links{display:none;}
+      .menu-panel.active{grid-template-columns:1fr;}
+      .form-row{grid-template-columns:1fr;}
+      .hero-stats{gap:1.5rem;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Maru<span>vaan</span></div>
+  <ul class="nav-links">
+    <li><a href="#how">How it works</a></li>
+    <li><a href="#menu">Today's menu</a></li>
+    <li><a href="#pricing">Plans</a></li>
+    <li><a href="#order">Order</a></li>
+  </ul>
+  <button class="nav-cart" onclick="toggleCart()">
+    🛒 Cart <span class="cart-badge" id="cartBadge">0</span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-dots"></div>
+  <div class="hero-text">
+    <div class="hero-tag">Now delivering across Sydney</div>
+    <h1>Real food.<br/><em>Every day.</em><br/>Delivered.</h1>
+    <p class="hero-sub">Home-style Indian tiffin made in small batches — balanced, nutritious, and consistent. No oil-dripping takeaway, no guesswork. Just proper food.</p>
+    <div class="hero-ctas">
+      <a href="#menu" class="btn-primary">See today's menu</a>
+      <a href="#pricing" class="btn-secondary">View plans</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Menu items daily</div>
+      </div>
+      <div>
+        <div class="stat-num" id="heroPrice">$10</div>
+        <div class="stat-label">Per meal</div>
+      </div>
+      <div>
+        <div class="stat-num" id="heroDelivery">12 PM</div>
+        <div class="stat-label">Daily delivery</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="tiffin-card tiffin-card-main" id="heroCard">
+      <div class="tiffin-img">🍱</div>
+      <div class="tiffin-card-body">
+        <div class="tiffin-day" id="heroDay">Today · Monday</div>
+        <div class="tiffin-name" id="heroName">Loading today's tiffin...</div>
+        <div class="tiffin-items" id="heroItems"></div>
+        <div class="tiffin-price-row">
+          <span class="price-tag" id="heroCardPrice">—</span>
+          <button class="add-btn" id="heroAddBtn">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="mini-cards">
+      <div class="mini-card"><div class="mini-icon">🏠</div><div class="mini-title">Home-style cooking</div><div class="mini-val">Not a restaurant</div></div>
+      <div class="mini-card"><div class="mini-icon">🌿</div><div class="mini-title">Fresh daily</div><div class="mini-val">Small-batch prep</div></div>
+      <div class="mini-card"><div class="mini-icon">🚴</div><div class="mini-title">Delivered by noon</div><div class="mini-val">Sydney suburbs</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="section-header">
+    <div class="section-tag">Simple process</div>
+    <h2>How Maruvaan works</h2>
+    <p>Four steps from hungry to happy — no cooking, no stress.</p>
+  </div>
+  <div class="steps-grid">
+    <div class="step"><div class="step-num">1</div><h3>Choose your plan</h3><p>Pick a daily, weekly, or monthly tiffin plan that fits your life and appetite.</p></div>
+    <div class="step"><div class="step-num">2</div><h3>We cook fresh</h3><p>Every morning, meals are cooked in small batches — balanced, home-style, no shortcuts.</p></div>
+    <div class="step"><div class="step-num">3</div><h3>Packed with care</h3><p>Each tiffin is sealed in leak-proof, heat-safe containers and labelled for your order.</p></div>
+    <div class="step"><div class="step-num">4</div><h3>Delivered by noon</h3><p>Hot food arrives at your door every day — no waiting, no wondering what's for lunch.</p></div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="section-header">
+    <div class="section-tag">Weekly rotation</div>
+    <h2>This week's menu</h2>
+    <p>Our menu rotates weekly so you never get bored. Everything is freshly prepared.</p>
+  </div>
+  <div class="day-tabs">
+    <button class="day-tab active" onclick="showDay('Monday',this)">Monday</button>
+    <button class="day-tab" onclick="showDay('Tuesday',this)">Tuesday</button>
+    <button class="day-tab" onclick="showDay('Wednesday',this)">Wednesday</button>
+    <button class="day-tab" onclick="showDay('Thursday',this)">Thursday</button>
+    <button class="day-tab" onclick="showDay('Friday',this)">Friday</button>
+  </div>
+  <div id="menuContainer">
+    <div class="menu-panel active" id="menuGrid">
+      <div class="menu-loading">Loading menu...</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="section-header">
+    <div class="section-tag">Subscription plans</div>
+    <h2>Pick your combo</h2>
+    <p>Subscribe and save. The more you commit, the less you spend per meal.</p>
+  </div>
+  <div class="plans-grid" id="plansGrid">
+    <!-- Plans rendered by JS from CMS or fallback -->
+  </div>
+</section>
+
+<!-- ORDER -->
+<section id="order">
+  <div class="section-header">
+    <div class="section-tag">Place your order</div>
+    <h2>Ready to eat well?</h2>
+    <p>Fill in your details and we'll confirm via WhatsApp within the hour.</p>
+  </div>
+  <div class="order-grid">
+    <div class="order-info">
+      <h3>Good to know</h3>
+      <div class="info-item">
+        <div class="info-icon">⏰</div>
+        <div class="info-text"><strong>Order by <span id="infoOrderCutoff">9 AM</span></strong><span>For same-day delivery — cutoff is 9 AM daily.</span></div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">🚴</div>
+        <div class="info-text"><strong>Delivered by <span id="infoDeliveryTime">noon</span></strong><span>We deliver across <span id="infoSuburbs">Sydney suburbs</span>.</span></div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">💬</div>
+        <div class="info-text"><strong>WhatsApp confirmation</strong><span>Every order is confirmed over WhatsApp. Fast and personal.</span></div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">💳</div>
+        <div class="info-text"><strong>Pay via Stripe or bank transfer</strong><span>Weekly and monthly plans require payment upfront.</span></div>
+      </div>
+    </div>
+    <div class="order-form">
+      <div class="form-row">
+        <div class="form-group"><label>First name</label><input type="text" placeholder="Aryan"/></div>
+        <div class="form-group"><label>Last name</label><input type="text" placeholder="Sharma"/></div>
+      </div>
+      <div class="form-group"><label>WhatsApp number</label><input type="tel" placeholder="+61 4XX XXX XXX"/></div>
+      <div class="form-group"><label>Suburb / delivery area</label><input type="text" placeholder="e.g. Parramatta, Ultimo, Burwood"/></div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Plan</label>
+          <select id="planSelect">
+            <option>Daily tiffin</option>
+            <option>Weekly plan</option>
+            <option>Monthly plan</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Meal preference</label>
+          <select>
+            <option>Lunch only</option>
+            <option>Dinner only</option>
+            <option>Both</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group"><label>Dietary notes or special requests</label><textarea placeholder="e.g. no onion, extra roti, mild spice…"></textarea></div>
+      <button class="submit-btn" onclick="handleSubmit(this)">Send my order request →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Maruvaan</div>
+  <div style="font-size:0.82rem;">© 2025 Maruvaan · Sydney, Australia</div>
+  <div style="font-size:0.82rem;">Made with ❤️ for busy stomachs</div>
+</footer>
+
+<!-- CART DRAWER -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <h3>Your tiffin cart</h3>
+    <button class="cart-close" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div class="cart-total-row">
+      <span>Total</span>
+      <span class="cart-total-price" id="cartTotal">$0</span>
+    </div>
+    <button class="cart-checkout-btn" onclick="checkout()">Proceed to order →</button>
+  </div>
+</div>
+
+<script>
+  // ── STATE ──
+  let cart = [];
+  let allMenuItems = [];
+  let currentDay = 'Monday';
+
+  const days = ['Monday','Tuesday','Wednesday','Thursday','Friday'];
+  const bgColors = [
+    'linear-gradient(135deg,#F97316,#D4900A)',
+    'linear-gradient(135deg,#7C3A1E,#E8590C)',
+    'linear-gradient(135deg,#D4900A,#F5C842)',
+    'linear-gradient(135deg,#FFF8F0,#E8590C)',
+    'linear-gradient(135deg,#2D6A4F,#52B788)'
+  ];
+
+  // ── FETCH MENU FROM CMS ──
+  async function loadMenu() {
+    try {
+      // List all menu files from GitHub via Netlify
+      const res = await fetch('/_menu/');
+      // Netlify doesn't serve directory listings, so we fetch the git tree
+      const treeRes = await fetch('https://api.github.com/repos/' + getRepo() + '/git/trees/main?recursive=1');
+      if (!treeRes.ok) throw new Error('no tree');
+      const tree = await treeRes.json();
+      const menuFiles = tree.tree.filter(f => f.path.startsWith('_menu/') && f.path.endsWith('.md'));
+
+      const items = await Promise.all(menuFiles.map(async f => {
+        const raw = await fetch('https://raw.githubusercontent.com/' + getRepo() + '/main/' + f.path);
+        const text = await raw.text();
+        return parseFrontmatter(text);
+      }));
+
+      allMenuItems = items.filter(i => i && i.available !== false);
+      renderMenu(currentDay);
+      renderHeroCard();
+    } catch(e) {
+      // Fallback to hardcoded menu if CMS not populated yet
+      allMenuItems = getDefaultMenu();
+      renderMenu(currentDay);
+      renderHeroCard();
+    }
+  }
+
+  function getRepo() {
+    // Reads repo from meta tag if set, otherwise tries to detect from netlify
+    const meta = document.querySelector('meta[name="github-repo"]');
+    if (meta) return meta.content;
+    // fallback — update this with your actual GitHub username/repo
+    return 'a-sh-mod/maruvaan';
+  }
+
+  function parseFrontmatter(text) {
+    const match = text.match(/^---\n([\s\S]*?)\n---/);
+    if (!match) return null;
+    const obj = {};
+    match[1].split('\n').forEach(line => {
+      const [key, ...rest] = line.split(':');
+      if (key && rest.length) obj[key.trim()] = rest.join(':').trim().replace(/^["']|["']$/g, '');
+    });
+    return obj;
+  }
+
+  // ── RENDER MENU ──
+  function renderMenu(day) {
+    currentDay = day;
+    const items = allMenuItems.filter(i => i.day === day);
+    const grid = document.getElementById('menuGrid');
+
+    if (!items.length) {
+      grid.innerHTML = '<div class="menu-empty">No items for ' + day + ' yet. Check back soon!</div>';
+      return;
+    }
+
+    const dayIndex = days.indexOf(day);
+    const bg = bgColors[dayIndex] || bgColors[0];
+
+    grid.innerHTML = items.map(item => `
+      <div class="menu-item-card">
+        <div class="menu-item-img" style="background:${bg}">${item.emoji || '🍱'}</div>
+        <div class="menu-item-body">
+          <div class="menu-item-name">${item.title}</div>
+          <div class="menu-item-desc">${item.description || ''}</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">$${item.price}</span>
+            <span class="veg-badge">🌿 Veg</span>
+            <button class="add-btn" onclick="addToCart('${item.title}',${item.price},'${item.emoji || '🍱'}')">+</button>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function renderHeroCard() {
+    const today = days[new Date().getDay() - 1] || 'Monday';
+    const todayItems = allMenuItems.filter(i => i.day === today);
+    const item = todayItems[0];
+    if (!item) return;
+
+    document.getElementById('heroDay').textContent = 'Today · ' + today;
+    document.getElementById('heroName').textContent = item.title;
+    document.getElementById('heroCardPrice').textContent = '$' + item.price;
+    document.getElementById('heroAddBtn').onclick = () => addToCart(item.title, parseInt(item.price), item.emoji || '🍱');
+
+    const chips = (item.description || '').split(',').slice(0,4).map(d =>
+      `<span class="item-chip">${d.trim()}</span>`
+    ).join('');
+    document.getElementById('heroItems').innerHTML = chips;
+  }
+
+  // ── LOAD SETTINGS ──
+  async function loadSettings() {
+    try {
+      const res = await fetch('https://raw.githubusercontent.com/' + getRepo() + '/main/_settings/general.json');
+      if (!res.ok) return;
+      const s = await res.json();
+      if (s.delivery_time) document.getElementById('heroDelivery').textContent = s.delivery_time;
+      if (s.delivery_time) document.getElementById('infoDeliveryTime').textContent = s.delivery_time;
+      if (s.order_cutoff) document.getElementById('infoOrderCutoff').textContent = s.order_cutoff;
+      if (s.suburbs) document.getElementById('infoSuburbs').textContent = s.suburbs;
+      if (s.plans && s.plans.length) renderPlans(s.plans);
+    } catch(e) { renderPlans(getDefaultPlans()); }
+  }
+
+  function renderPlans(plans) {
+    const icons = ['☀️','🗓️','📦'];
+    const featured = 1;
+    document.getElementById('plansGrid').innerHTML = plans.map((p, i) => `
+      <div class="plan-card ${i === featured ? 'featured' : ''}">
+        ${i === featured ? '<div class="plan-badge">Most popular</div>' : ''}
+        <div class="plan-icon">${icons[i] || '🍱'}</div>
+        <div class="plan-name">${p.name}</div>
+        <div class="plan-price">$${p.price}</div>
+        <div class="plan-period">${p.description}</div>
+        <button class="plan-cta ${i === featured ? 'plan-cta-solid' : 'plan-cta-outline'}" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">
+          Get this plan
+        </button>
+      </div>
+    `).join('');
+  }
+
+  // ── DEFAULT FALLBACKS (shown before CMS is populated) ──
+  function getDefaultMenu() {
+    return [
+      {title:'Dal Tadka',day:'Monday',description:'Slow-cooked yellow dal with cumin-garlic tadka. Served with roti and rice.',price:'11',emoji:'🫘',available:'true'},
+      {title:'Aloo Sabzi',day:'Monday',description:'Spiced potato curry with tomatoes and green chilli.',price:'10',emoji:'🥔',available:'true'},
+      {title:'Rajma Masala',day:'Tuesday',description:'Slow-cooked kidney beans in rich tomato-onion gravy.',price:'11',emoji:'🫘',available:'true'},
+      {title:'Chole',day:'Wednesday',description:'Bold chickpea curry with dried mango powder and spices.',price:'11',emoji:'🫘',available:'true'},
+      {title:'Jeera Rice',day:'Wednesday',description:'Basmati rice tempered with whole cumin.',price:'6',emoji:'🍚',available:'true'},
+      {title:'Paneer Butter Masala',day:'Thursday',description:'Soft cottage cheese in a silky tomato-cream gravy.',price:'12',emoji:'🧀',available:'true'},
+      {title:'Khichdi',day:'Friday',description:'One-pot rice and lentil porridge with turmeric and ghee.',price:'10',emoji:'🍲',available:'true'},
+    ];
+  }
+
+  function getDefaultPlans() {
+    return [
+      {name:'Daily Tiffin',price:'11',description:'Per meal · no commitment'},
+      {name:'Weekly Plan',price:'55',description:'5 meals per week · save $10'},
+      {name:'Monthly Plan',price:'200',description:'~20 meals · best value'},
+    ];
+  }
+
+  // ── DAY TABS ──
+  function showDay(day, btn) {
+    document.querySelectorAll('.day-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderMenu(day);
+  }
+
+  // ── CART ──
+  function addToCart(name, price, icon) {
+    const existing = cart.find(i => i.name === name);
+    if (existing) existing.qty++;
+    else cart.push({name, price, icon, qty:1});
+    renderCart();
+    if (!document.getElementById('cartDrawer').classList.contains('open')) toggleCart();
+  }
+
+  function renderCart() {
+    const total = cart.reduce((s,i) => s + i.price * i.qty, 0);
+    const count = cart.reduce((s,i) => s + i.qty, 0);
+    document.getElementById('cartBadge').textContent = count;
+    const el = document.getElementById('cartItems');
+    const footer = document.getElementById('cartFooter');
+    if (!cart.length) {
+      el.innerHTML = `<div class="cart-empty"><div class="cart-empty-icon">🍱</div><p style="color:var(--text2);font-size:0.9rem;">Your cart is empty.<br/>Add meals from today's menu.</p></div>`;
+      footer.style.display = 'none';
+      return;
+    }
+    footer.style.display = 'block';
+    document.getElementById('cartTotal').textContent = '$' + total;
+    el.innerHTML = cart.map((item,idx) => `
+      <div class="cart-item">
+        <div class="cart-item-icon">${item.icon}</div>
+        <div class="cart-item-info">
+          <div class="cart-item-name">${item.name}</div>
+          <div class="cart-item-price">$${item.price} each</div>
+          <div class="cart-qty">
+            <button class="qty-btn" onclick="updateQty(${idx},-1)">−</button>
+            <span class="qty-num">${item.qty}</span>
+            <button class="qty-btn" onclick="updateQty(${idx},1)">+</button>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function updateQty(idx, delta) {
+    cart[idx].qty += delta;
+    if (cart[idx].qty <= 0) cart.splice(idx,1);
+    renderCart();
+  }
+
+  function toggleCart() {
+    document.getElementById('cartOverlay').classList.toggle('open');
+    document.getElementById('cartDrawer').classList.toggle('open');
+  }
+
+  function checkout() {
+    toggleCart();
+    document.getElementById('order').scrollIntoView({behavior:'smooth'});
+  }
+
+  function handleSubmit(btn) {
+    btn.textContent = '✓ Request sent! We\'ll WhatsApp you shortly.';
+    btn.style.background = 'var(--green)';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = 'Send my order request →';
+      btn.style.background = '';
+      btn.disabled = false;
+    }, 4000);
+  }
+
+  // ── NETLIFY IDENTITY REDIRECT ──
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on('init', user => {
+      if (!user) {
+        window.netlifyIdentity.on('login', () => {
+          document.location.href = '/admin/';
+        });
+      }
+    });
+  }
+
+  // ── INIT ──
+  renderCart();
+  renderPlans(getDefaultPlans());
+  loadMenu();
+  loadSettings();
+</script>
+</body>
+</html>
